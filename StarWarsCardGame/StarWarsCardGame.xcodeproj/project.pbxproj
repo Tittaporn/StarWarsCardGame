@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		36E3A75025B0B6ED00B7204C /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E3A74F25B0B6ED00B7204C /* Character.swift */; };
+		36E3A75425B0BFE000B7204C /* CardCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E3A75325B0BFE000B7204C /* CardCollectionViewController.swift */; };
+		36E3A75825B0C37B00B7204C /* CharacterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E3A75725B0C37B00B7204C /* CharacterCollectionViewCell.swift */; };
+		36E3A7A825B0EFAF00B7204C /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E3A7A725B0EFAF00B7204C /* FilterViewController.swift */; };
 		7EDB74E025AF34B500B80B7D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDB74DF25AF34B500B80B7D /* AppDelegate.swift */; };
 		7EDB74E225AF34B500B80B7D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDB74E125AF34B500B80B7D /* SceneDelegate.swift */; };
 		7EDB74E725AF34B500B80B7D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EDB74E525AF34B500B80B7D /* Main.storyboard */; };
@@ -16,6 +20,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		36E3A74F25B0B6ED00B7204C /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		36E3A75325B0BFE000B7204C /* CardCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewController.swift; sourceTree = "<group>"; };
+		36E3A75725B0C37B00B7204C /* CharacterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCollectionViewCell.swift; sourceTree = "<group>"; };
+		36E3A7A725B0EFAF00B7204C /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		7EDB74DC25AF34B500B80B7D /* StarWarsCardGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StarWarsCardGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EDB74DF25AF34B500B80B7D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7EDB74E125AF34B500B80B7D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -37,6 +45,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		36E3A74E25B0B6C800B7204C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				36E3A74F25B0B6ED00B7204C /* Character.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		36E3A75225B0BFB900B7204C /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				36E3A75325B0BFE000B7204C /* CardCollectionViewController.swift */,
+				36E3A7A725B0EFAF00B7204C /* FilterViewController.swift */,
+			);
+			path = "View Controller";
+			sourceTree = "<group>";
+		};
+		36E3A75625B0C34A00B7204C /* Custom Cell */ = {
+			isa = PBXGroup;
+			children = (
+				36E3A75725B0C37B00B7204C /* CharacterCollectionViewCell.swift */,
+			);
+			path = "Custom Cell";
+			sourceTree = "<group>";
+		};
 		7EDB74D325AF34B500B80B7D = {
 			isa = PBXGroup;
 			children = (
@@ -56,6 +89,7 @@
 		7EDB74DE25AF34B500B80B7D /* StarWarsCardGame */ = {
 			isa = PBXGroup;
 			children = (
+				36E3A74E25B0B6C800B7204C /* Model */,
 				7EDB74FB25AF356600B80B7D /* Controllers */,
 				7EDB74FA25AF355B00B80B7D /* Views */,
 				7EDB74F425AF34C400B80B7D /* Resources */,
@@ -94,6 +128,7 @@
 		7EDB74FA25AF355B00B80B7D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				36E3A75625B0C34A00B7204C /* Custom Cell */,
 				7EDB74F925AF355300B80B7D /* Storyboards */,
 			);
 			path = Views;
@@ -102,6 +137,7 @@
 		7EDB74FB25AF356600B80B7D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				36E3A75225B0BFB900B7204C /* View Controller */,
 				7EDB74F625AF34D100B80B7D /* Model Controller */,
 			);
 			path = Controllers;
@@ -177,9 +213,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36E3A7A825B0EFAF00B7204C /* FilterViewController.swift in Sources */,
+				36E3A75825B0C37B00B7204C /* CharacterCollectionViewCell.swift in Sources */,
 				7EDB74E025AF34B500B80B7D /* AppDelegate.swift in Sources */,
 				7EDB74FD25AF359500B80B7D /* CharacterController.swift in Sources */,
 				7EDB74E225AF34B500B80B7D /* SceneDelegate.swift in Sources */,
+				36E3A75425B0BFE000B7204C /* CardCollectionViewController.swift in Sources */,
+				36E3A75025B0B6ED00B7204C /* Character.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
