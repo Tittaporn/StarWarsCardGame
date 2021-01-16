@@ -60,6 +60,8 @@ class CardCollectionViewController: UICollectionViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toFilterVC" {
             let destination = segue.destination as? FilterViewController
+            
+            //STEP 5 : Assing the delegate for the FilterVC to 'self' meaning the CardCollectionViewController
             // conform the protocol here and sent it to delegate on FilterViewController
             destination?.delegate = self
         }
@@ -138,6 +140,8 @@ extension CardCollectionViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
+
+// STEP 4 : Adopt the protocol and implement the stubs
 extension CardCollectionViewController: FiletrSelectionDelegate {
     
     func selectedFaction(faction: String) {
@@ -204,6 +208,114 @@ extension CardCollectionViewController: FiletrSelectionDelegate {
  In Swift self is a special property of an instance that holds the instance itself. Most of the times self appears in an initializer or method of a class, structure or enumeration. The motto favor clarity over brevity is a valuable strategy to follow.
  
  https://dmitripavlutin.com/how-to-use-correctly-self-keyword-in-swift/
- */
+ ___________________________________________________________
+ 
+ PROTOCOL DELEGATE
+ 
+ Mostly from view to view >> One View to Another View >> TableVC and TableViewCell to communicate.
+ 
+ There is no way to communicate backward from the button on DetailVC to TableVC. That  why we are using segue way.
+ 
+ USE - When user input are required for protocol comumunication pattern. It is for One To One Communication.
+ 
+ Protocol Delegate >> more from passing functions from one view to another view
+ Segue >> more for passing data from one view to another view
+ 
+ ___________________________________________________________
+ 
+ 
+  PROTOCOL DELEGATE NOTE BY Ben Tincher
+ //  I'm the Boss; if any customers order stuff (AKA user pushes the buttons on the VC), this is/are the task(s) I will need done today... I'm definitely going to need a delegate (employee) to do to these task(s)
 
+ // STEP 1 : Construct your protocol
+ protocol FilterSelectionDelegate: AnyObject {
+ func selectedFaction(faction: String) //    protocol stubs are what information we need to pass back up the chain of views - typically user interacts with the view that then triggers passing back up the chain
+ }
+ 
+ class FilterViewController: UIViewController {
+ 
+ // STEP 2 : Create the landing pad for the delegate
+ //  I need a delegate! Who is my delegate?!?  I'm looking for my employees!
+ weak var delegate: FilterSelectionDelegate?
+ 
+ override func viewDidLoad() {
+ super.viewDidLoad()
+ }
+ 
+ @IBAction func jediButtonTapped(_ sender: Any) {
+ 
+ //  (optional delegate? checks to see if a delegate has been assigned... did someone showed up for work?)
+ 
+ //STEP 3 : Call the protocol method where needed.
 
+ delegate?.selectedFaction(faction: "jedi")
+ //  if optional passes, a delegate does exist... aka an employee showed up for work
+ //  thank goodness I have a delegate now... do this task please... delegate (employee) goes off an does the task... how he/she actually completes the task is defined on the delegate's controller.
+ self.dismiss(animated: true, completion: nil)
+ }
+ 
+ @IBAction func sithButtonTapped(_ sender: Any) {
+ //  thank goodness I have a delegate now... do this task please. mmmk??  thanks.
+ delegate?.selectedFaction(faction: "sith")
+ self.dismiss(animated: true, completion: nil)
+ }
+ }
+ ___________________________________________________________
+
+// PROTOCOL DELEGATE NOTE BY Ben Tincher
+//  I'm the Boss; if any customers order stuff (AKA user pushes the buttons on the VC), this is/are the task(s) I will need done today... I'm definitely going to need a delegate (employee) to do to these task(s)
+
+// STEP 1 : Construct your protocol
+protocol FilterSelectionDelegate: AnyObject {
+func selectedFaction(faction: String) // protocol stubs are what information we need to pass back up the chain of views - typically user interacts with the view that then triggers passing back up the chain
+}
+
+class FilterViewController: UIViewController {
+
+// I need a delegate! Who is my delegate?!?  I'm looking for my employees!
+// STEP 2 : Create the landing pad for the delegate
+weak var delegate: FilterSelectionDelegate?
+
+@IBAction func jediButtonTapped(_ sender: Any) {
+//  (optional delegate? checks to see if a delegate has been assigned... did someone showed up for work?)
+    //STEP 3 : Call the protocol method where needed.
+delegate?.selectedFaction(faction: "jedi")
+//  if optional passes, a delegate does exist... aka an employee showed up for work
+//  thank goodness I have a delegate now... do this task please... delegate (employee) goes off an does the task... how he/she actually completes the task is defined on the delegate's controller.
+self.dismiss(animated: true, completion: nil)
+}
+    
+@IBAction func sithButtonTapped(_ sender: Any) {
+// thank goodness I have a delegate now... do this task please. mmmk??  thanks.
+//STEP 3 : Call the protocol method where needed.
+delegate?.selectedFaction(faction: "sith")
+self.dismiss(animated: true, completion: nil)
+}
+}
+
+class CardCollectionViewController: UICollectionViewController {
+    if segue.identifier == "toDetailVC" {
+        let destination = segue.destination as? FilterViewController
+        //STEP 5 : Assing the delegate for the FilterVC to 'self' meaning the CardCollectionViewController
+        destination?.delegate = self
+    }
+}
+
+// STEP 4 : Adopt the protocol and implement the stubs
+extension CardCollectionViewController: FilterSelectionDelegate {
+    func selectedFaction(faction: String) {
+        selectedFaction = faction
+        shuffleCharacters(faction: faction)
+    }
+}
+___________________________________________________________
+ 
+ 5 STEP OF PROTOCOL DELEGATE
+ // STEP 1 : Construct your protocol
+ // STEP 2 : Create the landing pad for the delegate
+ // STEP 3 : Call the protocol method where needed.
+ // STEP 4 : Adopt the protocol and implement the stubs
+ // STEP 5 : Assing the delegate for the FilterVC to 'self' meaning the CardCollectionViewController
+
+___________________________________________________________
+*/
